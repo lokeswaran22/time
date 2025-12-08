@@ -1,0 +1,298 @@
+/* Login Page Styles - Accessible & Clean */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.login-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 480px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.login-header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.logo-icon {
+    font-size: 2.5rem;
+}
+
+.logo-text {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff;
+}
+
+.login-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+    color: #ffffff;
+}
+
+.login-subtitle {
+    margin: 0;
+    opacity: 0.95;
+    font-size: 1rem;
+}
+
+.login-content {
+    padding: 2.5rem;
+}
+
+/* Teams & Demo Login Sections */
+.teams-login,
+.demo-login {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.teams-notice,
+.demo-notice {
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.teams-notice {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+    color: #1e40af;
+}
+
+.demo-notice {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.teams-notice p,
+.demo-notice p {
+    margin: 0.25rem 0;
+}
+
+.teams-notice strong,
+.demo-notice strong {
+    font-weight: 700;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #1f2937;
+    transition: all 0.2s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-input::placeholder {
+    color: #9ca3af;
+}
+
+/* Login Buttons */
+.login-button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.login-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.teams-button {
+    background: linear-gradient(135deg, #6264a7 0%, #464775 100%);
+    color: white;
+    box-shadow: 0 4px 6px rgba(98, 100, 167, 0.3);
+}
+
+.teams-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(98, 100, 167, 0.4);
+}
+
+.demo-button {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+}
+
+.demo-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(59, 130, 246, 0.4);
+}
+
+.login-button:focus {
+    outline: 3px solid #fbbf24;
+    outline-offset: 2px;
+}
+
+.teams-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.button-icon {
+    font-size: 1.25rem;
+}
+
+/* Spinner */
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error Message */
+.error-message {
+    background-color: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #991b1b;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Teams Features & Demo Help */
+.teams-features,
+.demo-help {
+    background-color: #f9fafb;
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+.teams-features h3,
+.demo-help p strong {
+    margin: 0 0 0.75rem 0;
+    font-size: 1rem;
+    color: #374151;
+}
+
+.teams-features ul,
+.demo-help ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.teams-features li,
+.demo-help li {
+    padding: 0.5rem 0;
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.demo-help code {
+    background-color: #e5e7eb;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #1f2937;
+}
+
+/* Footer */
+.login-footer {
+    background-color: #f9fafb;
+    padding: 1.5rem;
+    text-align: center;
+    border-top: 1px solid #e5e7eb;
+}
+
+.login-footer p {
+    margin: 0.25rem 0;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.version {
+    font-weight: 600;
+    color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .login-container {
+        padding: 1rem;
+    }
+
+    .login-content {
+        padding: 1.5rem;
+    }
+
+    .login-header {
+        padding: 1.5rem;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+    }
+
+    .login-title {
+        font-size: 1.25rem;
+    }
+}
