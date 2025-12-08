@@ -5,6 +5,7 @@
   "main": "script.js",
   "scripts": {
     "start": "node server-sqlite.js",
+    "start:prod": "node server-postgres.js",
     "build": "cd client && npm install && npm run build && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,6 +24,7 @@
     "mysql2": "^3.15.3",
     "passport": "^0.7.0",
     "passport-azure-ad": "^4.3.5",
+    "pg": "^8.16.3",
     "sqlite3": "^5.1.7",
     "xlsx": "^0.18.5"
   }

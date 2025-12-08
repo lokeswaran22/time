@@ -126,40 +126,8 @@ async function initDb() {
         `);
 
         console.log('Database tables initialized.');
-        await seedDefaultUsers();
     } catch (err) {
         console.error('Error initializing database:', err);
-    }
-}
-
-async function seedDefaultUsers() {
-    try {
-        const admin = await get('SELECT id FROM users WHERE username = ?', ['admin']);
-        if (!admin) {
-            console.log('Creating default admin user...');
-            await run('INSERT INTO users (username, password, role, createdAt) VALUES (?, ?, ?, ?)',
-                ['admin', 'admin123', 'admin', new Date().toISOString()]
-            );
-            console.log('Default admin user created.');
-        }
-
-        // Optional: Create default employees so the app isn't empty
-        const defaultEmployees = ['Loki', 'Anitha', 'Asha', 'Aswini'];
-        for (const name of defaultEmployees) {
-            const user = await get('SELECT id FROM users WHERE username = ?', [name]);
-            if (!user) {
-                await run('INSERT INTO users (username, password, role, createdAt) VALUES (?, ?, ?, ?)',
-                    [name, name.toLowerCase() + '123', 'employee', new Date().toISOString()]
-                );
-            }
-            // Link to employee table
-            const empId = name.toLowerCase().replace(/\s+/g, '-');
-            await run('INSERT OR IGNORE INTO employees (id, name, email, createdAt) VALUES (?, ?, ?, ?)',
-                [empId, name, '', new Date().toISOString()]
-            );
-        }
-    } catch (err) {
-        console.error('Error seeding default users:', err);
     }
 }
 

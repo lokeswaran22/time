@@ -13,131 +13,14 @@
     <link rel="icon" type="image/jpeg" href="images/logogo.jpg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="overflow-fix.css">
-    <style>
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 1rem;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-
-        .login-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--royal-gold);
-            border-radius: var(--border-radius-xl);
-            padding: 3rem;
-            width: 100%;
-            max-width: 450px;
-            box-shadow: var(--shadow-luxury);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .login-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-gold);
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-
-        .login-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .login-logo {
-            margin-bottom: 1rem;
-        }
-
-        .login-title {
-            font-family: var(--font-family);
-            font-size: 2rem;
-            color: var(--royal-navy);
-            margin-bottom: 0.5rem;
-        }
-
-        .login-subtitle {
-            color: var(--text-secondary);
-        }
-
-        /* Role Tabs */
-        .role-tabs {
-            display: flex;
-            background: #f1f5f9;
-            border-radius: 8px;
-            padding: 4px;
-            margin-bottom: 2rem;
-        }
-
-        .role-tab {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--text-secondary);
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-
-        .role-tab.active {
-            background: white;
-            color: var(--royal-blue);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .role-tab.active.admin-tab {
-            color: var(--royal-gold);
-            /* Gold for Admin */
-        }
-
-        /* Forgot Password */
-        .forgot-password {
-            display: block;
-            text-align: right;
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
-            color: var(--royal-blue);
-            text-decoration: none;
-        }
-
-        .forgot-password:hover {
-            text-decoration: underline;
-        }
-
-        .login-footer {
-            margin-top: 2rem;
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            border-top: 1px solid #eee;
-            padding-top: 1rem;
-        }
-
-        /* Admin Mode Styling */
-        body.admin-mode .login-card {
-            border-color: var(--royal-gold);
-            box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.3);
-        }
-    </style>
+    <link rel="stylesheet" href="login-style.css">
 </head>
 
 <body>
     <div class="login-card">
         <div class="login-header">
             <div class="login-logo">
-                <img src="images/logogo.jpg" alt="Pristonix" width="80"
-                    style="border-radius: 50%; border: 2px solid var(--royal-gold);">
+                <img src="images/logogo.jpg" alt="Pristonix" width="80">
             </div>
             <h1 class="login-title">Welcome Back</h1>
             <p class="login-subtitle" id="loginSubtitle">Please sign in to continue</p>

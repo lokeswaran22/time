@@ -163,14 +163,6 @@
                         </svg>
                         <h3>Recent Changes</h3>
                     </div>
-                    <button class="clear-tracker-btn" id="clearTrackerBtn" title="Clear History">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M3 6h18"></path>
-                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-                        </svg>
-                    </button>
                 </div>
                 <div class="activity-tracker-list" id="activityTrackerList">
                     <!-- Tracker items will be injected here -->
@@ -317,8 +309,27 @@
                     style="margin-bottom: 1.5rem; color: var(--text-secondary); font-weight: 600;">
                     Select an action:</p>
 
-                <!-- Action Buttons - Removed, now integrated into employee row actions -->
-
+                <!-- Action Buttons - RESTORED -->
+                <div id="actionButtons" class="form-actions"
+                    style="flex-direction: column; gap: 1rem; border-top: none; padding-top: 0; margin-top: 0;">
+                    <button class="btn" id="markLeaveOptionBtn"
+                        style="width: 100%; justify-content: center; background: var(--activity-leave); color: white; border: none; padding: 12px; font-size: 1rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            strokeWidth="2" style="margin-right: 8px;">
+                            <path
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        Mark Leave
+                    </button>
+                    <button class="btn" id="markPermissionOptionBtn"
+                        style="width: 100%; justify-content: center; background: var(--activity-meeting); color: white; border: none; padding: 12px; font-size: 1rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            strokeWidth="2" style="margin-right: 8px;">
+                            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Mark Permission
+                    </button>
+                </div>
 
                 <!-- Time Selection Form (Hidden by default) -->
                 <div id="timeSelectionForm" style="display: none;">
