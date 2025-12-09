@@ -1,0 +1,72 @@
+/* ==========================================
+   ACTIVITY TRACKER DATE GROUPING
+   ========================================== */
+.activity-tracker-time {
+    font-weight: 600;
+    color: var(--royal-gold-dark);
+}
+
+.activity-tracker-empty {
+    text-align: center;
+    padding: var(--spacing-2xl);
+    color: var(--text-secondary);
+}
+
+.activity-tracker-empty p {
+    margin: 0.5rem 0;
+}
+
+.activity-date-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.activity-date-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(30, 58, 138, 0.05) 100%);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+    color: var(--royal-navy);
+    border-left: 4px solid var(--royal-gold);
+    font-family: var(--font-family);
+}
+
+.activity-date-header svg {
+    color: var(--royal-gold);
+}
+
+.activity-count {
+    margin-left: auto;
+    font-size: var(--font-size-sm);
+    color: var(--royal-gold-dark);
+    background: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--royal-gold-light);
+}
+
+.activity-other-dates {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 2px dashed var(--royal-gold-light);
+}
+
+.activity-other-dates-hint {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.activity-other-dates-hint svg {
+    color: var(--royal-gold);
+    flex-shrink: 0;
+}
