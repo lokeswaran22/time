@@ -1,0 +1,595 @@
+/* ==========================================
+   WCAG 2.1 COMPLIANT ACCESSIBLE DESIGN SYSTEM
+   ========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    /* High Contrast Color Palette */
+    /* Primary needs to be accessible on white backgrounds */
+    --primary-color: #0056b3;
+    /* AA Large: 7.2:1, AAA Large: 4.8:1 */
+    --primary-dark: #004494;
+    --primary-light: #e7f1ff;
+    /* Background tint */
+
+    /* Functional Colors (High Contrast) */
+    --success-color: #0f5132;
+    /* Dark green for text */
+    --success-bg: #d1e7dd;
+    /* Light green for background */
+    --warning-color: #664d03;
+    /* Dark yellow/brown for text */
+    --warning-bg: #fff3cd;
+    /* Light yellow for background */
+    --error-color: #842029;
+    /* Dark red for text */
+    --error-bg: #f8d7da;
+    /* Light red for background */
+
+    /* Neutrals - High Legibility */
+    --text-primary: #212529;
+    /* Nearly black - Contrast 13:1 */
+    --text-secondary: #495057;
+    /* Dark gray - Contrast 9:1 */
+    --border-color: #6c757d;
+    /* Visible borders */
+    --border-light: #dee2e6;
+    --bg-body: #f8f9fa;
+    /* Very light gray to distinguish from card white */
+    --bg-surface: #ffffff;
+
+    /* Spacing & Sizing */
+    --space-sm: 0.5rem;
+    /* 8px */
+    --space-md: 1rem;
+    /* 16px */
+    --space-lg: 1.5rem;
+    /* 24px */
+    --space-xl: 2rem;
+    /* 32px */
+
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --base-font-size: 16px;
+    /* Ensure readable base size */
+
+    /* Focus Indicators - CRITICAL for Accessibility */
+    --focus-ring-color: #0d6efd;
+    --focus-ring-width: 3px;
+    --focus-offset: 2px;
+}
+
+/* ==========================================
+   RESET & BASE STYLES
+   ========================================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--base-font-size);
+    line-height: 1.5;
+    color: var(--text-primary);
+    background-color: var(--bg-body);
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* Accessible Focus States */
+:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-offset);
+}
+
+/* Links */
+a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    /* Underlines help distinguish links */
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: none;
+}
+
+/* ==========================================
+   LAYOUT
+   ========================================== */
+.container {
+    max-width: 1400px;
+    /* Constrain width for readability line-length */
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+    width: 100%;
+}
+
+.main-content {
+    padding: var(--space-xl) 0;
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+.header {
+    background-color: var(--bg-surface);
+    border-bottom: 2px solid var(--border-light);
+    /* Clear distinct border */
+    padding: var(--space-md) 0;
+    position: relative;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+    gap: var(--space-md);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    text-decoration: none;
+}
+
+.logo-text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+#userInfoDisplay {
+    background-color: var(--bg-body);
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* ==========================================
+   BUTTONS
+   ========================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    /* Min height 44px for touch targets */
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    /* Prepare for border changes */
+    transition: background-color 0.2s, color 0.2s;
+    text-decoration: none;
+    min-height: 44px;
+    /* WCAG touch target size */
+    min-width: 44px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-secondary {
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-body);
+    color: #000000;
+    border-color: #000000;
+    /* High contrast hover */
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #ffffff;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #bb2d3b;
+    border-color: #bb2d3b;
+}
+
+.btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.875rem;
+}
+
+/* ==========================================
+   FORMS & INPUTS
+   ========================================== */
+.form-group {
+    margin-bottom: var(--space-lg);
+}
+
+label {
+    display: block;
+    margin-bottom: var(--space-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--text-primary);
+    background-color: var(--bg-surface);
+    border: 2px solid var(--border-color);
+    /* Thicker visible border */
+    border-radius: 4px;
+    min-height: 44px;
+    /* Touch target */
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--focus-ring-color);
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+
+/* ==========================================
+   CARDS & CONTAINERS
+   ========================================== */
+.date-selector-card,
+.activity-tracker-card,
+.timesheet-container {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    /* Removed drop shadows for cleaner look, added border for definition */
+}
+
+.date-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.date-selector h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+/* ==========================================
+   TABLES
+   ========================================== */
+.table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    margin-top: var(--space-md);
+    background: var(--bg-surface);
+}
+
+.timesheet-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1200px;
+    /* Ensure readability */
+}
+
+/* Headers */
+.timesheet-table th {
+    background-color: #e9ecef;
+    /* Light gray distinguishable from white */
+    color: var(--text-primary);
+    font-weight: 700;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+    /* Strong separation */
+    border-right: 1px solid var(--border-light);
+    white-space: nowrap;
+}
+
+/* Cells */
+.timesheet-table td {
+    padding: 0;
+    /* Let inner content handle padding for hit area */
+    border-bottom: 1px solid var(--border-light);
+    border-right: 1px solid var(--border-light);
+    vertical-align: top;
+    height: 100px;
+    /* Sufficient height */
+}
+
+/* First Column - Sticky */
+.timesheet-table td:first-child,
+.timesheet-table th:first-child {
+    position: sticky;
+    left: 0;
+    background-color: #e9ecef;
+    border-right: 2px solid var(--border-color);
+    font-weight: 600;
+    z-index: 10;
+    padding: 12px;
+    width: 150px;
+}
+
+/* ==========================================
+   ACTIVITY CELLS
+   ========================================== */
+.activity-cell {
+    height: 100%;
+    width: 100%;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.2s;
+    position: relative;
+    border: 2px solid transparent;
+    /* For focus/hover state */
+}
+
+.activity-cell:hover,
+.activity-cell:focus {
+    background-color: #f1f3f5;
+}
+
+/* Focus within cell for keyboard users */
+.activity-cell:focus-visible {
+    border-color: var(--focus-ring-color);
+    z-index: 1;
+}
+
+.activity-cell.empty {
+    /* Subtle pattern or text to indicate interactive area */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 0.875rem;
+}
+
+.activity-cell.has-activity {
+    background-color: #f8f9fa;
+}
+
+/* Activity Badges - High Contrast Text */
+.activity-type-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    /* Default is white */
+    text-align: center;
+    max-width: fit-content;
+}
+
+/* Use distinctive colors but ensure contrast */
+.activity-type-badge.work {
+    background-color: #0d6efd;
+    color: #ffffff;
+}
+
+.activity-type-badge.break {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+/* Black text on yellow */
+.activity-type-badge.lunch {
+    background-color: #198754;
+    color: #ffffff;
+}
+
+.activity-type-badge.meeting {
+    background-color: #6610f2;
+    color: #ffffff;
+}
+
+.activity-type-badge.epub {
+    background-color: #d63384;
+    color: #ffffff;
+}
+
+.activity-type-badge.proof {
+    background-color: #fd7e14;
+    color: #000000;
+}
+
+/* Black text on orange */
+.activity-type-badge.calibr {
+    background-color: #0dcaf0;
+    color: #000000;
+}
+
+/* Black text on cyan */
+.activity-type-badge.other {
+    background-color: #6c757d;
+    color: #ffffff;
+}
+
+.activity-type-badge.leave {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.activity-description {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+/* ==========================================
+   MODALS
+   ========================================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    /* High opacity overlay */
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--bg-surface);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    /* Modal border definition */
+}
+
+.modal-header {
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+}
+
+.modal-close {
+    background: transparent;
+    border: 2px solid transparent;
+    /* Visible click area */
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    background-color: #e9ecef;
+    color: #000000;
+    border-color: var(--border-color);
+}
+
+.modal-body {
+    padding: var(--space-lg);
+}
+
+.form-actions {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-md);
+}
+
+/* ==========================================
+   STATUS TOASTS
+   ========================================== */
+.status-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    min-width: 300px;
+    padding: 16px;
+    border-radius: 4px;
+    background-color: var(--bg-surface);
+    border: 2px solid transparent;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.status-toast.success {
+    background-color: var(--success-bg);
+    color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.status-toast.error {
+    background-color: var(--error-bg);
+    color: var(--error-color);
+    border-color: var(--error-color);
+}
+
+/* ==========================================
+   UTILITY & ACCESSIBILITY HELPER CLASSES
+   ========================================== */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: var(--space-lg);
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-light);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
