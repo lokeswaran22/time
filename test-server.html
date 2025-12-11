@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Server Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .status {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .success {
+            color: #28a745;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="status">
+        <div class="success">✅ Server is Working!</div>
+        <p>Your Node.js server is running correctly on port 3000.</p>
+        <p>Server time: <span id="time"></span></p>
+        <hr>
+        <h3>Next Steps:</h3>
+        <ol>
+            <li><a href="/">Go to Main Application</a></li>
+            <li><a href="/login">Go to Login Page</a></li>
+        </ol>
+    </div>
+    <script>
+        document.getElementById('time').textContent = new Date().toLocaleString();
+    </script>
+</body>
+
+</html>

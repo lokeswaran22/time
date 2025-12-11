@@ -1,0 +1,41 @@
+/* Daily Timesheet Container - wraps both table and activity tracker */
+.daily-timesheet-container {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--royal-gold);
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-2xl);
+    margin-bottom: var(--spacing-2xl);
+    box-shadow: var(--shadow-luxury);
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.daily-timesheet-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-gold);
+}
+
+/* Remove borders from inner containers when inside daily container */
+.daily-timesheet-container .timesheet-container,
+.daily-timesheet-container .activity-tracker-card {
+    margin-bottom: var(--spacing-xl);
+    border: none;
+    box-shadow: none;
+}
+
+.daily-timesheet-container .timesheet-container::before,
+.daily-timesheet-container .activity-tracker-card::before {
+    display: none;
+}
+
+.daily-timesheet-container .activity-tracker-card:last-child {
+    margin-bottom: 0;
+}

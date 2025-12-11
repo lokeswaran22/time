@@ -1,0 +1,150 @@
+    createActivityCell(employeeId, timeSlot) {
+        const activity = this.getActivity(employeeId, timeSlot);
+        const dateKey = this.getDateKey(this.currentDate);
+        const cellKey = `${dateKey}_${employeeId}_${timeSlot}`;
+        const history = this.activityHistory?.[cellKey] || [];
+        
+        const div = document.createElement('div');
+        div.className = 'activity-cell';
+        div.onclick = () => this.openActivityModal(employeeId, timeSlot);
+
+        // Add history indicator if there's history
+        if (history.length > 0) {
+            div.classList.add('has-history');
+            div.setAttribute('data-history-count', history.length);
+            
+            // Create tooltip on hover
+            div.onmouseenter = (e) => this.showHistoryTooltip(e, history, employeeId);
+            div.onmouseleave = () => this.hideHistoryTooltip();
+        }
+
+        if (activity) {
+            div.classList.add('has-activity', `type-${activity.type}`);
+
+            // Only show description for work and meeting types
+            const showDescription = activity.type === 'work' || activity.type === 'meeting';
+            const descriptionHtml = showDescription && activity.description
+                ? `<div class="activity-description">${activity.description}</div>`
+                : '';
+
+            const historyIndicator = history.length > 0 
+                ? `<div class="history-indicator" title="${history.length} change${history.length > 1 ? 's' : ''}">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>${history.length}</span>
+                   </div>`
+                : '';
+
+            div.innerHTML = `
+                <div class="activity-type-badge ${activity.type}">${activity.type}</div>
+                ${descriptionHtml}
+                ${historyIndicator}
+            `;
+        } else {
+            div.classList.add('empty');
+            const historyIndicator = history.length > 0 
+                ? `<div class="history-indicator empty-history" title="${history.length} change${history.length > 1 ? 's' : ''}">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>${history.length}</span>
+                   </div>`
+                : '';
+            div.innerHTML = `<span>+ Add Activity</span>${historyIndicator}`;
+        }
+
+        return div;
+    }
+
+    showHistoryTooltip(event, history, employeeId) {
+        // Remove any existing tooltip
+        this.hideHistoryTooltip();
+        
+        const employee = this.employees.find(emp => emp.id === employeeId);
+        const tooltip = document.createElement('div');
+        tooltip.className = 'history-tooltip';
+        tooltip.id = 'historyTooltip';
+        
+        const historyHtml = history.map((item, index) => {
+            const time = this.formatHistoryTime(new Date(item.timestamp));
+            const actionClass = item.action === 'cleared' ? 'cleared' : 'updated';
+            const actionText = item.action === 'cleared' ? 'Cleared' : 'Updated';
+            const desc = item.description || '';
+            
+            return `
+                <div class="history-item ${actionClass}">
+                    <div class="history-item-header">
+                        <span class="history-action">${actionText}</span>
+                        <span class="history-time">${time}</span>
+                    </div>
+                    <div class="history-item-content">
+                        <span class="history-type type-${item.type}">${item.type}</span>
+                        ${desc ? `<span class="history-desc">${desc}</span>` : ''}
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        tooltip.innerHTML = `
+            <div class="history-tooltip-header">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>Activity History</span>
+            </div>
+            <div class="history-tooltip-body">
+                ${historyHtml}
+            </div>
+        `;
+        
+        document.body.appendChild(tooltip);
+        
+        // Position tooltip near the cell
+        const rect = event.currentTarget.getBoundingClientRect();
+        const tooltipRect = tooltip.getBoundingClientRect();
+        
+        let left = rect.right + 10;
+        let top = rect.top;
+        
+        // Adjust if tooltip goes off screen
+        if (left + tooltipRect.width > window.innerWidth) {
+            left = rect.left - tooltipRect.width - 10;
+        }
+        
+        if (top + tooltipRect.height > window.innerHeight) {
+            top = window.innerHeight - tooltipRect.height - 10;
+        }
+        
+        tooltip.style.left = `${left}px`;
+        tooltip.style.top = `${top}px`;
+        tooltip.classList.add('show');
+    }
+
+    hideHistoryTooltip() {
+        const tooltip = document.getElementById('historyTooltip');
+        if (tooltip) {
+            tooltip.remove();
+        }
+    }
+
+    formatHistoryTime(date) {
+        const now = new Date();
+        const diff = now - date;
+        const seconds = Math.floor(diff / 1000);
+        const minutes = Math.floor(seconds / 60);
+        const hours = Math.floor(minutes / 60);
+        const days = Math.floor(hours / 24);
+        
+        if (seconds < 60) return 'Just now';
+        if (minutes < 60) return `${minutes}m ago`;
+        if (hours < 24) return `${hours}h ago`;
+        if (days === 1) return 'Yesterday';
+        if (days < 7) return `${days}d ago`;
+        
+        // Format as date for older entries
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    }

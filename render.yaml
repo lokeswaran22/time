@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: timesheet-tracker
+    env: node
+    buildCommand: npm install && cd client && npm install && npm run build && cd ..
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production

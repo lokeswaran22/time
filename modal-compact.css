@@ -1,0 +1,21 @@
+/* Add these CSS rules to make modals more compact */
+
+/* Activity Modal - More Compact */
+#activityModal .modal-content {
+    max-width: 400px !important;
+}
+
+/* Employee Options Modal - Even More Compact */
+#employeeActionModal .modal-content {
+    max-width: 380px !important;
+}
+
+/* Ensure modals don't overflow on small screens */
+@media (max-width: 480px) {
+
+    #activityModal .modal-content,
+    #employeeActionModal .modal-content {
+        max-width: 95vw !important;
+        margin: 0 auto;
+    }
+}
